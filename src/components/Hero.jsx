@@ -1,14 +1,19 @@
-import { useState } from 'react'
+import confetti from 'canvas-confetti'
+import { motion } from 'motion/react'
 
 function Hero() {
-  const [showConfetti, setShowConfetti] = useState(false)
-
   const handleRSVP = () => {
-    setShowConfetti(true)
-
-    setTimeout(() => {
-      setShowConfetti(false)
-    }, 1200)
+    confetti({
+      particleCount: 100,
+      spread: 75,
+      startVelocity: 35,
+      origin: {
+        x: 0.18,
+        y: 0.65,
+      },
+      colors: ['#ffc928', '#fff4d6', '#f08b79', '#176b4d'],
+      disableForReducedMotion: true,
+    })
   }
 
   return (
@@ -37,15 +42,23 @@ function Hero() {
           <span>San Antonio, Texas</span>
         </div>
 
-        <a
+        <motion.a
           className="rsvp-button"
           href="#"
           target="_blank"
           rel="noreferrer"
           onClick={handleRSVP}
+          whileHover={{
+            scale: 1.05,
+            rotate: -2,
+          }}
+          whileTap={{
+            scale: 0.95,
+            rotate: 1,
+          }}
         >
           RSVP
-        </a>
+        </motion.a>
       </div>
     </section>
   )
