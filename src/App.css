@@ -1,184 +1,218 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
+@import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&family=Lilita+One&display=swap');
 
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
+:root {
+  --cream: #fff4d6;
+  --green: #176b4d;
+  --red: #d6533c;
+  --yellow: #ffc928;
+  --brown: #241c18;
+  --pink: #f08b79;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--red);
+  color: var(--brown);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* HERO */
 
 .hero {
+  min-height: 100svh;
   position: relative;
+  overflow: hidden;
+  background: var(--red);
 
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
+  display: flex;
+  align-items: center;
 
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
+  padding: 7vh 10vw;
 }
 
-#center {
+/* FULL-SCREEN ARTWORK */
+
+.hero-art {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-art-placeholder {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 3px dashed rgba(255, 244, 214, 0.45);
+
+  color: rgba(255, 244, 214, 0.65);
+  font-family: 'Darumadrop One', cursive;
+  font-size: 2.5rem;
+}
+
+/*
+  Later, replace the placeholder with the artist's
+  transparent full-screen artwork.
+
+  .hero-art img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+*/
+
+/* HERO CONTENT */
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+
+  width: min(720px, 100%);
+
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
+  align-items: flex-start;
 }
 
-#next-steps {
+/* HAVEN: SAN ANTONIO */
+
+.hero-eyebrow {
+  margin: 0 0 24px;
+
+  font-family: 'Darumadrop One', cursive;
+  font-size: clamp(1.3rem, 1.7vw, 1.7rem);
+  line-height: 1;
+
+  color: var(--yellow);
+
+  letter-spacing: 0.02em;
+}
+
+/* MAIN TITLE */
+
+.hero h1 {
+  margin: 0;
+
+  font-family: 'Lilita One', sans-serif;
+  font-size: clamp(6rem, 12vw, 12rem);
+  line-height: 0.78;
+  letter-spacing: -0.025em;
+
+  color: var(--cream);
+
+  text-wrap: balance;
+}
+
+/* DESCRIPTION */
+
+.hero-description {
+  max-width: 650px;
+
+  margin: 52px 0 28px;
+
+  font-family: 'Lilita One', sans-serif;
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  line-height: 1.25;
+
+  color: var(--cream);
+}
+
+/* DATE + LOCATION */
+
+.hero-details {
   display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
+  flex-wrap: wrap;
+  gap: 12px 36px;
 
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
+  margin-bottom: 40px;
 
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
+  font-family: 'Darumadrop One', cursive;
+  font-size: clamp(1.25rem, 1.8vw, 1.6rem);
+  line-height: 1.1;
 
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
+  color: var(--yellow);
 }
 
-#docs {
-  border-right: 1px solid var(--border);
+/* RSVP */
 
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
+.rsvp-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 170px;
+  min-height: 68px;
+
+  padding: 14px 42px;
+
+  background: var(--yellow);
+  color: var(--brown);
+
+  border: 4px solid var(--brown);
+  border-radius: 999px;
+
+  font-family: 'Darumadrop One', cursive;
+  font-size: 1.7rem;
+  line-height: 1;
+
+  box-shadow: 0 7px 0 var(--brown);
 }
 
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
+/* MOBILE */
 
-  .logo {
-    height: 18px;
-  }
+@media (max-width: 768px) {
+  .hero {
+    min-height: 100svh;
+    padding: 48px 24px 64px;
 
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
     align-items: center;
+  }
+
+  .hero-content {
+    width: 100%;
+  }
+
+  .hero-eyebrow {
+    margin-bottom: 20px;
+    font-size: 1.25rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(5.5rem, 23vw, 8rem);
+  }
+
+  .hero-description {
+    margin-top: 40px;
+    font-size: 1.4rem;
+  }
+
+  .hero-details {
+    flex-direction: column;
     gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
 
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
+    font-size: 1.25rem;
   }
 
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
+  .rsvp-button {
+    min-width: 160px;
+    min-height: 64px;
 
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
-  position: relative;
-  width: 100%;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
-
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
+    font-size: 1.5rem;
   }
 }
